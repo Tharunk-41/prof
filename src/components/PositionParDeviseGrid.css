@@ -1,0 +1,55 @@
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+.ag-grid-container {
+  height: 600px;
+  width: 100%;
+}
+
+.cell-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cell-icon {
+  margin-right: 8px;
+  font-size: 10px;
+}
+
+.cell-symbols {
+  display: flex;
+  align-items: center;
+}
+
+.difference-column {
+  padding: 5px 8px !important;
+}
+
+.difference-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.difference-icon {
+  margin-right: 5px;
+  font-size: 10px;
+}
+
+.difference-text {
+  color: #dc3545;
+  font-size: 12px;
+  flex-grow: 1;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-white {
+  color: white;
+} 

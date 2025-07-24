@@ -1,0 +1,19 @@
+{
+  "positions": {
+    "totalPosition": { "montantBack": 44666.24, "montantFront": 44666.14 },
+    "totalOrphelinsPending": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalOrphelinsBack": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalOrphelinsFront": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalEcart": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalEcartGpTerme": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalEcartGpComptant": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalRejet": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalRegul": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalA": { "montantBack": 44666.24, "montantFront": 44666.14 },
+    "totalDealManuel": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalACor": { "montantBack": 44666.24, "montantFront": 44666.14 },
+    "totalPositionLibre": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalPositionLibreGL": { "montantBack": 0.00, "montantFront": 0.00 },
+    "totalAB": { "montantBack": 44666.24, "montantFront": 44666.14 }
+  }
+}

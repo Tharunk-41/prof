@@ -1,0 +1,40 @@
+{
+  "totalPosition": [
+    {
+      "lot": "3623",
+      "devise": "AED",
+      "montantBack": -324946.50,
+      "montantFront": 0.00,
+      "reference": "3821002000",
+      "libelle": "BACK_POS_GL"
+    },
+    {
+      "lot": "3623",
+      "devise": "AED",
+      "montantBack": 347000.00,
+      "montantFront": 0.00,
+      "reference": "936410000",
+      "libelle": "BACK_POS_GL"
+    }
+  ],
+  "totalEcartGpTerme": [
+    {
+      "lot": "3624",
+      "devise": "AED",
+      "montantBack": 15000.00,
+      "montantFront": 0.00,
+      "reference": "4821002001",
+      "libelle": "TERME_POS_GL"
+    }
+  ],
+  "totalPositionLibre": [
+    {
+      "lot": "9999",
+      "devise": "AED",
+      "montantBack": 1000.00,
+      "montantFront": 0.00,
+      "reference": "9999999999",
+      "libelle": "LIBRE_POS_GL"
+    }
+  ]
+} 

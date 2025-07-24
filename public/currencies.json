@@ -1,0 +1,8 @@
+{
+  "currencies": [
+    "AED", "ARS", "AUD", "BGN", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", 
+    "EEK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "ISK", "JPY", 
+    "LTL", "LVL", "MXN", "NOK", "NZD", "PLN", "QAR", "RON", "RUB", "SAR", 
+    "SEK", "SGD", "THB", "TRY", "USD", "XAG", "XAU", "XPT", "ZAR"
+  ]
+} 
