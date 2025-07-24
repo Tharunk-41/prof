@@ -52,4 +52,12 @@
 
 .text-white {
   color: white;
+}
+
+/* Added for flex-end alignment in cell renderers */
+.cell-flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
 } 

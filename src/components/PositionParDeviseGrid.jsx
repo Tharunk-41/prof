@@ -1,14 +1,15 @@
-import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { Badge, Button } from 'react-bootstrap';
 import './PositionParDeviseGrid.css';
 
+// Row keys and display names for the grid
 const rowKeys = [
   "totalPosition","totalOrphelinsPending","totalOrphelinsBack","totalOrphelinsFront","totalEcart","totalEcartGpTerme","totalEcartGpComptant","totalRejet","totalRegul","totalA","totalDealManuel","totalACor","totalPositionLibre","totalPositionLibreGL"
 ];
 const rowDisplayNames = [
   "Position comptable","Opération pending (*)","Présente au Back (absente au Front)","Présente au Front (absente au Back)","Ecart après matching","Ecart ordre groupé (change à terme)","Ecart ordre groupé (change comptant)","Articles comptables rejetés","Ecritures en régularisation","Total","Correction Manuelle","Total corrigé","Position marchés libre","GL Position marchés libre"
 ];
+// Grouping for visual separation
 const groups = [
   [0],[1,2,3],[4],[5,6],[7,8],[9],[10],[11],[12,13]
 ];
@@ -19,6 +20,7 @@ const boldRows = [
   'Total A + B + C'
 ];
 
+// Build the data for the grid
 function buildGridData(financialData, selectedCurrency) {
   if (!financialData) return [];
   let id = 1;
@@ -48,6 +50,7 @@ function buildGridData(financialData, selectedCurrency) {
       });
     });
   });
+  // Add the final total row
   const totalAB = financialData.positions["totalAB"] || { montantBack: '', montantFront: '' };
   gridData.push({
     id: id++,
@@ -64,6 +67,8 @@ function buildGridData(financialData, selectedCurrency) {
 
 const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDetails, handleShowAjoutCorrection }) => {
   const gridData = buildGridData(financialData, selectedCurrency);
+
+  // Column definitions for ag-grid
   const columnDefs = [
     {
       headerName: '',
@@ -71,7 +76,9 @@ const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDeta
       flex: 1,
       cellRenderer: (params) => {
         const d = params.data;
-        if (d.isHeader) return <span style={{ color: 'white', fontWeight: 'bold' }}>{d.description}</span>;
+        // Header row
+        if (d.isHeader) return <span className="text-white text-bold">{d.description}</span>;
+        // Special rows with badges
         if (d.description === 'Total A + B + C') return (
           <div className="cell-symbols"><span>Total</span><Badge bg="danger" className="cell-icon">A</Badge><span>+</span><Badge bg="secondary" className="cell-icon">B</Badge><span>+</span><Badge bg="secondary" className="cell-icon">C</Badge></div>
         );
@@ -94,8 +101,9 @@ const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDeta
       flex: 1,
       cellRenderer: (params) => {
         const d = params.data;
+        // Show details button for certain rows
         if (d.detailsKey && (d.key === 'totalPosition' || d.key === 'totalPositionLibre' || d.key === 'totalPositionLibreGL')) {
-          return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}><Button variant="link" size="sm" className="magnifying-glass" onClick={() => handleShowDetails(d.detailsKey, d.description)}><i className="bi bi-search"></i></Button><span>{d.montantBack}</span></div>;
+          return <div className="cell-flex-end"><Button variant="link" size="sm" className="magnifying-glass" onClick={() => handleShowDetails(d.detailsKey, d.description)}><i className="bi bi-search"></i></Button><span>{d.montantBack}</span></div>;
         }
         return <span>{d.montantBack}</span>;
       },
@@ -106,13 +114,14 @@ const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDeta
       }
     },
     {
-      headerName: 'Front',
+      headerName: 'K+',
       field: 'montantFront',
       flex: 1,
       cellRenderer: (params) => {
         const d = params.data;
+        // Show details button for totalPosition
         if (d.detailsKey && d.key === 'totalPosition') {
-          return <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}><Button variant="link" size="sm" className="magnifying-glass" onClick={() => handleShowDetails(d.detailsKey, d.description)}><i className="bi bi-search"></i></Button><span>{d.montantFront}</span></div>;
+          return <div className="cell-flex-end"><Button variant="link" size="sm" className="magnifying-glass" onClick={() => handleShowDetails(d.detailsKey, d.description)}><i className="bi bi-search"></i></Button><span>{d.montantFront}</span></div>;
         }
         return <span>{d.montantFront}</span>;
       },
@@ -128,9 +137,11 @@ const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDeta
       flex: 1,
       cellRenderer: (params) => {
         const d = params.data;
+        // Ajout correction button
         if (d.description === 'Correction Manuelle') {
           return <div className="difference-cell"><Button size="sm" variant="outline-danger" onClick={handleShowAjoutCorrection} style={{ padding: '2px 6px', fontSize: '11px', minWidth: 0 }}>Ajout correction</Button></div>;
         }
+        // Difference badge for totals
         if ((d.description === 'Total' || d.description === 'Total corrigé') && d.difference !== null && d.difference !== undefined) {
           return (
             <div className="difference-cell">
@@ -149,6 +160,7 @@ const PositionParDeviseGrid = ({ financialData, selectedCurrency, handleShowDeta
     }
   ];
 
+  // Row style for headers and group separation
   const getRowStyle = (params) => {
     if (params.data && params.data.isHeader) {
       return { backgroundColor: '#dc3545', color: 'white', fontWeight: 'bold' };
